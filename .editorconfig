@@ -1,5 +1,4 @@
+# corrects tab spacing on github
 [*.{js,jsx,html,sass}]
-charset = utf-8
 indent_style = tab
 indent_size = 4
-trim_trailing_whitespace = true
