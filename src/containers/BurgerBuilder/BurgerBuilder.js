@@ -61,9 +61,11 @@ class BurgerBuilder extends Component {
 	};
 
 	render() {
+		// Make a copy of student.ingredients
 		const disabledInfo = {
 			...this.state.ingredients,
 		};
+		// For each key in disabledInfo, set value to true/false if less-than/greater-than 0
 		for (let key in disabledInfo) {
 			disabledInfo[key] = disabledInfo[key] <= 0;
 		}
@@ -73,7 +75,9 @@ class BurgerBuilder extends Component {
 				<BuildControls
 					ingredientAdded={this.addIngredientHandler}
 					ingredientRemoved={this.removeIngredientHandler}
+					// Pass true/false values
 					disabled={disabledInfo}
+					price={this.state.totalPrice}
 				/>
 			</Aux>
 		);
