@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Aux from '../../hoc/Aux';
 import './Layout.css';
 import Toolbar from './../Navigation/Toolbar/Toolbar';
+import SideDrawer from './../Navigation/SideDrawer/SideDrawer';
 
-const layout = props => (
-	<Aux>
-		<Toolbar />
-		<main className="layout-content">{props.children}</main>
-	</Aux>
-);
+class Layout extends Component {
+	state = {
+		showSideDrawer: false,
+	};
 
-export default layout;
+	sideDrawerClosedHandler = () => {
+		this.setState({ showSideDrawer: false });
+	};
+
+	sideDrawerToggleHandler = () => {
+		// When using state in setState, ( i.e. this.setState({showSideDrawer: !this.state.showSideDrawer})) )
+		// due to the asnyc nature of setState the example above may lead to unexpected outcomes.
+		// Below is the clean way to set state when it depends on the old state
+		this.setState(prevState => {
+			return { showSideDrawer: !prevState.showSideDrawer };
+		});
+	};
+
+	render() {
+		return (
+			<Aux>
+				<Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
+				<SideDrawer closed={this.sideDrawerClosedHandler} open={this.state.showSideDrawer} />
+				<main className="layout-content">{this.props.children}</main>
+			</Aux>
+		);
+	}
+}
+
+export default Layout;
