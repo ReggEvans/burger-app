@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './Modal.css';
-import Aux from '../../../hoc/Aux';
+import Aux from '../../../hoc/Aux/Aux';
 import Backdrop from '../Backdrop/Backdrop';
 
 class Modal extends Component {
@@ -11,7 +11,7 @@ class Modal extends Component {
 	// OrderSummary can be controled here because the Modal component wraps around
 	// it in BurgerBuilder
 	shouldComponentUpdate(nextProps, nextState) {
-		return nextProps.show !== this.props.show;
+		return nextProps.show !== this.props.show || nextProps.children !== this.props.chidren;
 	}
 	// componentWillUpdate() {
 	// 	console.log('[Modal] WillUpdate');
