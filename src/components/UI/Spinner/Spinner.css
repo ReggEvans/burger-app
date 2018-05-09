@@ -1,5 +1,9 @@
+.loader-wrapper {
+	padding: 100px 0;
+}
+
 .loader {
-	margin: 100px auto;
+	margin: 0 auto;
 	font-size: 25px;
 	width: 1em;
 	height: 1em;
